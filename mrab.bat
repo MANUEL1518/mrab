@@ -1,26 +1,27 @@
 @echo off
 
-REM Espero y te agrade. No olvides visitar mi espacio en github. con amor: MANUEL H. PONCE
+REM ...::: [MANUEL H. PONCE] :::...
+REM Espero y te agrade. No olvides visitar mi espacio en github.
 
-if %1 == 1 (
+IF %1 == 1 (
 	goto Imagenes
 ) ELSE (
-	if %1 == 2 (
+	IF %1 == 2 (
 		goto Documentos
 	) ELSE (
-		if %1 == 3 (
+		IF %1 == 3 (
 			goto Musica
 		) ELSE (
-			if %1 == 4 (
+			IF %1 == 4 (
 				goto Videos
 			) ELSE (
-				if %1 == 5 (
+				IF %1 == 5 (
 					goto Todo
 				) ELSE (
-					if %1 == 13 (
+					IF %1 == 13 (
 						goto delete
 					) ELSE (
-						if %1 == help (
+						IF %1 == help (
 							goto menu
 						) ELSE (
 							goto error
@@ -47,16 +48,18 @@ echo.
 echo  ------------------------------------------------------ 
 echo.
 echo  Copia todos los archivos del equipo de distintos tipos
-echo     una carpeta en la ruta donde esta este archivo
+echo    en una carpeta en la ruta donde esta este archivo
 echo.
-echo  ------------------------------------------------------
-echo  -              1.       Imagenes                     -
-echo  -              2.   Documentos:Office                -
-echo  -              3.        Musica                      -
-echo  -              4.        Videos                      -
-echo  -              5.         Todo                       -
-echo  -             13.    Borrar COPIADOS                 -
-echo  ------------------------------------------------------
+echo  ------------------[TIPOS DE ARCHIVOS]-----------------
+echo  -                                                    -
+echo  -              1. Imagenes                           -
+echo  -              2. Documentos:Office                  -
+echo  -              3. Musica                             -
+echo  -              4. Videos                             -
+echo  -              5. Todo                               -
+echo  -             13. Borrar COPIADOS                    -
+echo  -                                                    -
+echo  ------------------[TIPOS DE ARCHIVOS]-----------------
 echo.
 echo  Sintaxis: mrab [tipo de archivo]
 goto end                   
@@ -113,13 +116,17 @@ goto total
 
 :delete
 IF EXIST "COPIADOS\" (
+	echo.
+	echo   Deleting files...
 	RD /s /q COPIADOS\
+	echo.
+	echo   [OK] Successful file deletion
 ) ELSE (
 	echo.
 	echo No existe carpeta de archivos COPIADOS
 	goto end
 )
-goto erase
+goto end
 
 :total
 echo.
@@ -130,19 +137,14 @@ echo.
 echo   #########################################
 echo.
 echo   Ruta: ./COPIADOS/
-goto erase
-
-:error
-echo.
-echo  ERROR !!! Los parametros ingresados son incorrectos
-echo.
-echo  Puedes obtener mas informacion ingresando: mrab help
 goto end
 
-:erase
+:error
+echo  ______________________________________________________
 echo.
-echo   [-] OK
-set /a r = 0
+echo  ERROR !!! Los parametros ingresados son incorrectos
+echo  ______________________________________________________
+goto menu
 
 :end
 set /a r = 0
